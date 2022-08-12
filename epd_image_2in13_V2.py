@@ -1,8 +1,10 @@
+from image_creator import ImageCreator
+
 from waveshare_epd import epd2in13_V2
 from PIL import Image, ImageDraw, ImageFont
 
 
-class EPDImage:
+class EPDImage(ImageCreator):
     def __init__(self):
         self.epd = epd2in13_V2.EPD()
         self.pixel_width = self.epd.width
@@ -15,6 +17,8 @@ class EPDImage:
 
         self.epd.init(self.epd.FULL_UPDATE)
         self.epd.Clear(0xFF)
+
+        super().__init__(self.pixel_width, self.pixel_height)
 
 
 

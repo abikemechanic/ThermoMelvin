@@ -1,7 +1,9 @@
+from image_creator import ImageCreator
+
 from PIL import Image, ImageDraw, ImageFont
 
 
-class WindowsImage:
+class WindowsImage(ImageCreator):
     def __init__(self):
         self.pixel_width = 122
         self.pixel_height = 250
@@ -10,6 +12,8 @@ class WindowsImage:
 
         self.small_font = ImageFont.truetype(r'fonts\Courier Prime Bold.ttf', 12)
         self.large_font = ImageFont.truetype(r'fonts\Courier Prime Bold.ttf', 20)
+
+        super().__init__(self.pixel_width, self.pixel_height)
 
     def add_text(self, text):
         self.draw.text((0, 0), text, font=self.large_font, fill=0)

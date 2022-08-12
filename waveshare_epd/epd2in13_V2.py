@@ -107,7 +107,7 @@ class EPD:
         epdconfig.digital_write(self.cs_pin, 1)
 
     def ReadBusy(self):
-        while (epdconfig.digital_read(self.busy_pin) == 1):  # 0: idle, 1: busy
+        while epdconfig.digital_read(self.busy_pin) == 1:  # 0: idle, 1: busy
             epdconfig.delay_ms(100)
 
     def TurnOnDisplay(self):
@@ -123,11 +123,11 @@ class EPD:
         self.ReadBusy()
 
     def init(self, update):
-        if (epdconfig.module_init() != 0):
+        if epdconfig.module_init() != 0:
             return -1
         # EPD hardware init start
         self.reset()
-        if (update == self.FULL_UPDATE):
+        if update == self.FULL_UPDATE:
             self.ReadBusy()
             self.send_command(0x12)  # soft reset
             self.ReadBusy()

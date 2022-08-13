@@ -18,6 +18,8 @@ class EPDImage(ImageCreator):
         self.epd.init(self.epd.FULL_UPDATE)
         self.epd.Clear(0xFF)
 
+        print('crated RPi image display')
+
         super().__init__(self.pixel_width, self.pixel_height)
 
     def add_text(self, text):

@@ -13,7 +13,7 @@ class WindowsImage(ImageCreator):
         self.small_font = ImageFont.truetype(r'fonts\Courier Prime Bold.ttf', 12)
         self.large_font = ImageFont.truetype(r'fonts\Courier Prime Bold.ttf', 20)
 
-        print('creatd windows image display')
+        print('created windows image display')
 
         super().__init__(self.pixel_width, self.pixel_height)
 

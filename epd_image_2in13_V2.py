@@ -29,3 +29,6 @@ class EPDImage(ImageCreator):
     def show_image(self):
         print(type(self.image))
         self.epd.display(self.epd.getbuffer(self.image))
+
+    def clear(self):
+        self.epd.Clear(0xFF)

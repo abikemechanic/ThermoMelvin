@@ -23,3 +23,6 @@ class WindowsImage(ImageCreator):
 
     def show_image(self):
         self.image.show('test')
+
+    def clear(self):
+        print('nothing to clear on Windows')

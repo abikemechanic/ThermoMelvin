@@ -1,4 +1,5 @@
 import os
+import time
 
 if not os.name == 'nt':
     from epd_image_2in13_V2 import EPDImage as MessageDisplay
@@ -12,5 +13,7 @@ if __name__ == '__main__':
 
     img.add_text('yellow')
     img.show_image()
+    time.sleep(5)
+    img.clear()
 
 

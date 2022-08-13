@@ -20,5 +20,9 @@ class EPDImage(ImageCreator):
 
         super().__init__(self.pixel_width, self.pixel_height)
 
+    def add_text(self, text):
+        self.draw.text((0, 0), text, font=self.large_font, fill=0)
+        self.draw.text((0, 18), text, font=self.small_font, fill=0)
 
-
+    def show_image(self):
+        self.epd.display(self.image)

@@ -28,4 +28,4 @@ class EPDImage(ImageCreator):
 
     def show_image(self):
         print(type(self.image))
-        self.epd.display(self.image)
+        self.epd.display(self.epd.getbuffer(self.image))

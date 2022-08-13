@@ -1,7 +1,7 @@
 import os
 
 if not os.name == 'nt':
-    import epd_image_2in13_V2 as MessageDisplay
+    from epd_image_2in13_V2 import EPDImage as MessageDisplay
 else:
     from win_image_2in13_V2 import WindowsImage as MessageDisplay
 

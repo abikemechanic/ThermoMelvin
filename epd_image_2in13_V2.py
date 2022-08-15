@@ -27,7 +27,6 @@ class EPDImage(ImageCreator):
         self.draw.text((0, 18), text, font=self.small_font, fill=0)
 
     def show_image(self):
-        print(type(self.image))
         self.epd.display(self.epd.getbuffer(self.image))
 
     def clear(self):

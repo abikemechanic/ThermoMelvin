@@ -2,9 +2,9 @@ import os
 import time
 
 if not os.name == 'nt':
-    from epd_image_2in13_V2 import EPDImage as MessageDisplay
+    from image_2in13_V2_epd import EPDImage as MessageDisplay
 else:
-    from win_image_2in13_V2 import WindowsImage as MessageDisplay
+    from image_2in13_V2_win import WindowsImage as MessageDisplay
 
 
 if __name__ == '__main__':

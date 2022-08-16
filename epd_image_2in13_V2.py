@@ -1,4 +1,5 @@
 from image_creator import ImageCreator
+from mqtt_handler import MQTTHandler
 
 from waveshare_epd import epd2in13_V2
 from PIL import Image, ImageDraw, ImageFont
@@ -18,7 +19,7 @@ class EPDImage(ImageCreator):
         self.epd.init(self.epd.FULL_UPDATE)
         self.epd.Clear(0xFF)
 
-        print('crated RPi image display')
+        print('created RPi image display')
 
         super().__init__(self.pixel_width, self.pixel_height)
 

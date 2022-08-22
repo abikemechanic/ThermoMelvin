@@ -1,4 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
+from mqtt_handler import MQTTHandler as mqtt
 
 
 class ImageCreator:
@@ -11,6 +12,7 @@ class ImageCreator:
 
         self.image = Image.new('1', (self.pixel_height, self.pixel_width), 255)
         self.draw = ImageDraw.Draw(self.image)
+        self.mqtt = mqtt('192.168.1.13', 1883)
 
     def add_text(self, text: str):
         self.draw.text((0, 0), text, font=self.large_font, fill=0)

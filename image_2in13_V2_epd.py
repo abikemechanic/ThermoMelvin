@@ -54,8 +54,10 @@ class EPDImage(ImageCreator):
         self.epd.Clear(0xFF)
 
     def create_image(self):
-        self.add_text(f'Last Chicken: {self.last_chicken.hour}:{self.last_chicken.minute}'
-                      f', {self.last_chicken.month}\\{self.last_chicken.day}', line=0)
+        self.add_text(f'Last Chicken:', line=0)
+        self.add_text(f'    {self.last_chicken.hour}:{self.last_chicken.minute}'
+                      f', {self.last_chicken.month}\\{self.last_chicken.day}', line=1)
 
-        self.add_text(f'Last Fish: {self.last_fish.hour}:{self.last_fish.minute}'
-                      f', {self.last_fish.month}\\{self.last_fish.day}', line=1)
+        self.add_text(f'Last Fish:', line=2)
+        self.add_text(f' {self.last_fish.hour}:{self.last_fish.minute}'
+                      f', {self.last_fish.month}\\{self.last_fish.day}', line=3)

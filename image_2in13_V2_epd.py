@@ -39,6 +39,7 @@ class EPDImage(ImageCreator):
     @last_fish.setter
     def last_fish(self, value):
         self._last_fish = datetime.datetime.now()
+        print(f'Last Fish at: {value.strftime("%H:%M")}')
 
     @property
     def last_chicken(self):
@@ -47,6 +48,7 @@ class EPDImage(ImageCreator):
     @last_chicken.setter
     def last_chicken(self, value):
         self._last_chicken = datetime.datetime.now()
+        print(f'Last Chicken at: {value.strftime("%H:%M")}')
 
     def show_image(self):
         self.epd.display(self.epd.getbuffer(self.image))

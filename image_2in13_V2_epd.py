@@ -11,6 +11,8 @@ class EPDImage(ImageCreator):
         self.pixel_height = self.epd.height
 
         self._last_message: str = ''
+        self._last_fish = datetime.datetime.now()
+        self._last_chicken = datetime.datetime.now()
 
         self.epd.init(self.epd.FULL_UPDATE)
         self.epd.Clear(0xFF)

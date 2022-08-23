@@ -1,8 +1,7 @@
 from image_creator import ImageCreator
-from mqtt_handler import MQTTHandler
+import datetime
 
 from waveshare_epd import epd2in13_V2
-from PIL import Image, ImageDraw, ImageFont
 
 
 class EPDImage(ImageCreator):
@@ -28,8 +27,24 @@ class EPDImage(ImageCreator):
     def last_message(self, value):
         self._last_message = value
         self.clear()
-        self.add_text(value)
+        self.create_image()
         self.show_image()
+
+    @property
+    def last_fish(self):
+        return self._last_fish
+
+    @last_fish.setter
+    def last_fish(self, value):
+        self._last_fish = datetime.datetime.now()
+
+    @property
+    def last_chicken(self):
+        return self._last_chicken
+
+    @last_chicken.setter
+    def last_chicken(self, value):
+        self._last_chicken = datetime.datetime.now()
 
     def show_image(self):
         self.epd.display(self.epd.getbuffer(self.image))
@@ -37,3 +52,10 @@ class EPDImage(ImageCreator):
     def clear(self):
         self.clear_image()
         self.epd.Clear(0xFF)
+
+    def create_image(self):
+        self.add_text(f'Last Chicken: {self.last_chicken.hour}:{self.last_chicken.minute}'
+                      f', {self.last_chicken.month}\\{self.last_chicken.day}', line=0)
+
+        self.add_text(f'Last Fish: {self.last_fish.hour}:{self.last_fish.minute}'
+                      f', {self.last_fish.month}\\{self.last_fish.day}', line=1)

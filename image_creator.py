@@ -1,3 +1,5 @@
+import datetime
+
 from PIL import Image, ImageDraw, ImageFont
 from mqtt_handler import MQTTHandler as MQTT
 
@@ -11,6 +13,8 @@ class ImageCreator:
         self.pixel_height = pixel_height
 
         self._last_message: str = ''
+        self._last_fish = datetime.datetime.now()
+        self._last_chicken = datetime.datetime.now()
 
         self.image = Image.new('1', (self.pixel_height, self.pixel_width), 255)
         self.draw = ImageDraw.Draw(self.image)
@@ -27,7 +31,7 @@ class ImageCreator:
 
     def add_text(self, text: str, font=large_font, line=0):
         # how to keep track of lines
-        self.draw.text((0, 0), text, font=font, fill=0)
+        self.draw.text((0, line * 15), text, font=font, fill=0)
 
     def clear_image(self):
         self.image = Image.new('1', (self.pixel_height, self.pixel_width), 255)
@@ -35,5 +39,5 @@ class ImageCreator:
 
     def mqtt_message_recv(self, cli, userdata, message):
         print(f'Message from ImageCreator: {message.payload.decode()}')
-        self.last_message = message.payload.decode()
+        self.last_message = message
 

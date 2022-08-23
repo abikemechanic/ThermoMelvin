@@ -30,9 +30,9 @@ class ImageCreator:
     def last_message(self, value):
         self._last_message = value
         print(value.payload.decode())
-        if 'fish' in self._last_message.payload.decode().toLower():
+        if 'fish' in self._last_message.payload.decode().lower():
             self._last_fish = datetime.datetime.now()
-        elif 'chicken' in self._last_message.payload.decode().toLower():
+        elif 'chicken' in self._last_message.payload.decode().lower():
             self._last_chicken = datetime.datetime.now()
 
     def add_text(self, text: str, font=large_font, line=0):

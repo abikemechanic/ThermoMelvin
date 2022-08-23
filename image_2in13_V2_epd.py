@@ -28,6 +28,13 @@ class EPDImage(ImageCreator):
     @last_message.setter
     def last_message(self, value):
         self._last_message = value
+
+        print(value.payload.decode())
+        if 'fish' in self._last_message.payload.decode().toLower():
+            self._last_fish = datetime.datetime.now()
+        elif 'chicken' in self._last_message.payload.decode().toLower():
+            self._last_chicken = datetime.datetime.now()
+
         self.clear()
         self.create_image()
         self.show_image()

@@ -2,6 +2,7 @@ import datetime
 
 from PIL import Image, ImageDraw, ImageFont
 from mqtt_handler import MQTTHandler as MQTT
+from paho.mqtt import client
 
 
 class ImageCreator:
@@ -12,9 +13,9 @@ class ImageCreator:
         self.pixel_width = pixel_width
         self.pixel_height = pixel_height
 
-        self._last_message: str = ''
-        self._last_fish = datetime.datetime.now()
-        self._last_chicken = datetime.datetime.now()
+        self._last_message: client.MQTTMessage = client.MQTTMessage()
+        self._last_fish = datetime.datetime.strptime('1/1/1990', '%m/%d/%Y')
+        self._last_chicken = datetime.datetime.strptime('1/1/1990', '%m/%d/%Y')
 
         self.image = Image.new('1', (self.pixel_height, self.pixel_width), 255)
         self.draw = ImageDraw.Draw(self.image)

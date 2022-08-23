@@ -11,8 +11,8 @@ if __name__ == '__main__':
     print("Starting e-paper display")
     img = MessageDisplay()
 
-    now = datetime.datetime.now()
-    img.add_text(f'{now.hour}:{now.minute}, {now.month}\\{now.day}\\{now.year}')
-    img.show_image()
+    # now = datetime.datetime.now()
+    # img.add_text(f'{now.hour}:{now.minute}, {now.month}\\{now.day}\\{now.year}')
+    # img.show_image()
 
     img.mqtt.mqtt_client.loop_forever()

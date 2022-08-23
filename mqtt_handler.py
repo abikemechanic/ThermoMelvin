@@ -30,4 +30,4 @@ class MQTTHandler:
         self.last_message = message
 
     def topic_subscribe(self):
-        self.mqtt_client.subscribe('Mango/Food')
+        self.mqtt_client.subscribe('home/cat/mango/can_opened')

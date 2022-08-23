@@ -30,9 +30,9 @@ class EPDImage(ImageCreator):
         self._last_message = value
 
         print(value.payload.decode())
-        if 'fish' in self._last_message.payload.decode().toLower():
+        if 'fish' in self._last_message.payload.decode().lower():
             self._last_fish = datetime.datetime.now()
-        elif 'chicken' in self._last_message.payload.decode().toLower():
+        elif 'chicken' in self._last_message.payload.decode().lower():
             self._last_chicken = datetime.datetime.now()
 
         self.clear()

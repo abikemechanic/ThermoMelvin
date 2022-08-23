@@ -1,12 +1,13 @@
 # import paho
-from paho.mqtt import client as mqtt
+# from paho.mqtt import client as mqtt
+import paho.mqtt.client as mqtt
 
 
 class MQTTHandler:
     def __init__(self, host, port):
         self.host = host
         self.port = port
-        self.mqtt_client: paho.mqtt.client = mqtt
+        self.mqtt_client = mqtt.Client()
         self.connected = False
         self.last_message = None
 
@@ -15,6 +16,7 @@ class MQTTHandler:
         self.mqtt_client.on_message = self.on_message
 
         self.connect()
+        self.topic_subscribe()
 
     def connect(self):
         self.mqtt_client.connect(self.host, self.port)
@@ -26,7 +28,7 @@ class MQTTHandler:
         self.connected = False
 
     def on_message(self, cli, userdata, message):
-        print("Message: " + message.payload)
+        print("Message: " + message.payload.decode())
         self.last_message = message
 
     def topic_subscribe(self):

@@ -11,12 +11,25 @@ class EPDImage(ImageCreator):
         self.pixel_width = self.epd.width
         self.pixel_height = self.epd.height
 
+        self._last_message: str = ''
+
         self.epd.init(self.epd.FULL_UPDATE)
         self.epd.Clear(0xFF)
 
         print('created RPi image display')
 
         super().__init__(self.pixel_width, self.pixel_height)
+
+    @property
+    def last_message(self):
+        return self._last_message
+
+    @last_message.setter
+    def last_message(self, value):
+        self._last_message = value
+        self.clear()
+        self.add_text(value)
+        self.show_image()
 
     def show_image(self):
         self.epd.display(self.epd.getbuffer(self.image))

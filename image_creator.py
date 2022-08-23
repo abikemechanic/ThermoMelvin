@@ -25,7 +25,7 @@ class ImageCreator:
     def last_message(self, value):
         self._last_message = value
 
-    def add_text(self, text: str, font=self.large_font, line=0):
+    def add_text(self, text: str, font=large_font, line=0):
         # how to keep track of lines
         self.draw.text((0, 0), text, font=font, fill=0)
 

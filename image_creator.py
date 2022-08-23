@@ -28,6 +28,10 @@ class ImageCreator:
     @last_message.setter
     def last_message(self, value):
         self._last_message = value
+        if 'fish' in self._last_message.payload.decode().toLower():
+            self._last_fish = datetime.datetime.now()
+        elif 'chicken' in self._last_message.payload.decode().toLower():
+            self._last_chicken = datetime.datetime.now()
 
     def add_text(self, text: str, font=large_font, line=0):
         # how to keep track of lines

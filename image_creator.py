@@ -6,8 +6,12 @@ from paho.mqtt import client
 
 
 class ImageCreator:
-    small_font = ImageFont.truetype(r'./fonts/Courier Prime Bold.ttf', 12)
-    large_font = ImageFont.truetype(r'./fonts/Courier Prime Bold.ttf', 20)
+    try:
+        small_font = ImageFont.truetype(r'./fonts/Courier Prime Bold.ttf', 12)
+        large_font = ImageFont.truetype(r'./fonts/Courier Prime Bold.ttf', 20)
+    except OSError:
+        small_font = ImageFont.truetype(r'~/.fonts/Courier Prime Bold.ttf', 12)
+        large_font = ImageFont.truetype(r'~/.fonts/Courier Prime Bold.ttf', 20)
 
     def __init__(self, pixel_width=250, pixel_height=122):
         self.pixel_width = pixel_width

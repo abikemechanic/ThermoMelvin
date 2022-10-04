@@ -2,6 +2,7 @@
 from paho.mqtt import client as mqtt
 # import paho.mqtt.client as mqtt
 
+
 class MQTTHandler:
     def __init__(self, host, port):
         self.host = host
